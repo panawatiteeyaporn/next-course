@@ -1,12 +1,14 @@
 "use client";
-import { CldUploadWidget, CldImage } from "next-cloudinary";
 import React, { useState } from "react";
+import { CldUploadWidget, CldImage } from "next-cloudinary";
 
 interface CloudinaryResult {
   public_id: string;
 }
+
 const UploadPage = () => {
   const [publicId, setPublicId] = useState("");
+
   return (
     <>
       {publicId && (
@@ -18,13 +20,13 @@ const UploadPage = () => {
         />
       )}
       <CldUploadWidget
-        uploadPreset="hhzgaap1"
+        uploadPreset="gdbybt2f"
         options={{
           sources: ["local"],
           multiple: false,
           maxFiles: 5,
         }}
-        onSuccess={(result, widget) => {
+        onUpload={(result, widget) => {
           if (result.event !== "success") return;
           const info = result.info as CloudinaryResult;
           setPublicId(info.public_id);
